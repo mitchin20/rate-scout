@@ -1,0 +1,111 @@
+{
+    "steps": [
+        {
+            "id": "essentials",
+            "title": "Loan Details",
+            "fields": [
+                {
+                    "id": "loanPurpose",
+                    "label": "Loan Purpose",
+                    "type": "select",
+                    "options": ["purchase", "refinance"],
+                    "displayMap": {
+                        "purchase": "Purchase",
+                        "refinance": "Refinance"
+                    },
+                    "default": "purchase"
+                },
+                {
+                    "id": "borrowerProfile",
+                    "label": "Borrower Profile",
+                    "type": "select",
+                    "options": ["homebuyer", "investor"],
+                    "default": "homebuyer"
+                },
+                {
+                    "id": "propertyPrice",
+                    "label": "Property Price",
+                    "type": "number",
+                    "required": true,
+                    "min": 50000
+                },
+                {
+                    "id": "downPaymentPct",
+                    "label": "Down Payment (%)",
+                    "type": "number",
+                    "default": 20
+                },
+                {
+                    "id": "creditScoreBand",
+                    "label": "Credit Score Band",
+                    "type": "select",
+                    "options": ["740+", "720-739", "700-719", "680-699", "660-679"],
+                    "required": true,
+                    "placeholder": "Credit score",
+                    "default": "740+"
+                },
+                {
+                    "id": "loanTermYears",
+                    "label": "Loan Terms - Year Fixed",
+                    "type": "select",
+                    "options": [10, 15, 20, 30],
+                    "displayMap": {
+                        "10": 10,
+                        "15": 15,
+                        "20": 20,
+                        "30": 30
+                    },
+                    "default": 360
+                },
+                {
+                    "id": "productType",
+                    "label": "Product Type",
+                    "type": "select",
+                    "options": ["conventional", "fha", "va", "jumbo"],
+                    "displayMap": {
+                        "conventional": "Conventional",
+                        "fha": "FHA",
+                        "va": "VA",
+                        "jumbo": "Jumbo"
+                    },
+                    "default": "conventional"
+                },
+                {
+                    "id": "occupancyType",
+                    "label": "Occupancy Type",
+                    "type": "select",
+                    "options": ["primary_residence", "second_home", "investment"],
+                    "displayMap": {
+                        "primary_residence": "Primary Residence",
+                        "second_home": "Second Home",
+                        "investment": "Investment"
+                    },
+                    "default": "primary_residence"
+                },
+                {
+                    "id": "zip",
+                    "label": "ZIP Code",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "12345"
+                },
+                {
+                    "id": "propertyType",
+                    "label": "Property Type",
+                    "type": "select",
+                    "options": ["single_family", "condo", "townhome", "2_4_units"],
+                    "displayMap": {
+                        "single_family": "Single Family",
+                        "2_4_units": "2–4 Units"
+                    }
+                },
+                {
+                    "id": "monthlyRent",
+                    "label": "Monthly Rent",
+                    "type": "number",
+                    "placeholder": 0
+                }
+            ]
+        }
+    ]
+}

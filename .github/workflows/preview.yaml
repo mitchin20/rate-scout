@@ -1,0 +1,44 @@
+name: Vercel Preview Deployment
+
+on:
+    push:
+        branches-ignore:
+            - main
+    pull_request:
+
+env:
+    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+concurrency:
+    group: preview-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    deploy-preview:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - name: Install deps
+              run: npm ci
+
+            # - name: Test (optional)
+            #   run: npm test --if-present
+
+            - name: Install Vercel CLI
+              run: npm i -g vercel@latest
+
+            - name: Pull Vercel env (preview)
+              run: vercel pull --yes --environment=preview --token ${{ secrets.VERCEL_TOKEN }}
+
+            - name: Build
+              run: vercel build --token ${{ secrets.VERCEL_TOKEN }}
+
+            - name: Deploy (preview)
+              run: vercel deploy --prebuilt --token ${{ secrets.VERCEL_TOKEN }}
